@@ -20,3 +20,8 @@ export interface NacosInstance {
   instanceHeartBeatTimeOut: number;
   instanceHeartBeatInterval: number;
 }
+
+export enum EServiceName {
+  MS = "ms",
+  RS = "rs",
+}

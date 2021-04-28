@@ -1,8 +1,8 @@
-import { apiSixClient as apisix } from "./apisix";
+import { apiSixClient } from "./apisix";
 import log4js from "./log_config";
 import * as nacos from "nacos";
 const { NacosNamingClient } = nacos as any;
-import { NacosInstance, UpstreamNode } from "./module";
+import { NacosInstance, UpstreamNode, EServiceName } from "./module";
 
 const log = log4js.getLogger("nacos");
 const serviceName = "rs";
@@ -28,7 +28,7 @@ function subscribe() {
       nodes[idx] = { host: item.ip, port: item.port, weight: 1 };
     });
     log.debug("--------> ", nodes);
-    apisix.update_route(nodes);
+    apiSixClient.updateRoute(nodes);
   });
 }
 
