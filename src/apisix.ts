@@ -17,7 +17,7 @@ export class Apisix {
     try {
       await axiosClient.get("/apisix/admin/routes/" + s.routeId);
     } catch (e) {
-      log.warn("initRoute error: ", e);
+      log.warn("initRoute error: ", e.message);
       await this.createRoute(s);
       return true;
     }
