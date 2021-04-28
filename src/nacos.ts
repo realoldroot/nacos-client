@@ -1,4 +1,4 @@
-import apisix from "./apisix";
+import Apisix from "./apisix";
 import log4js from "./log_config";
 import * as nacos from "nacos";
 const { NacosNamingClient } = nacos as any;
@@ -8,11 +8,16 @@ const log = log4js.getLogger("nacos");
 const serviceName = "rs";
 let lastNodeCount = 0;
 
+const nacosAddress = process.env.NACOS_ADDRESS ?? "nacos:8848";
+log.info("nacosAddress: ", nacosAddress);
+
 const client = new NacosNamingClient({
   logger: log,
-  serverList: "127.0.0.1:8848",
+  serverList: nacosAddress,
   namespace: "public",
 });
+
+const apisix = new Apisix();
 
 export default function subscribe() {
   client.subscribe(serviceName, (data: Array<NacosInstance>) => {

@@ -1,4 +1,16 @@
 import log4js, { getLogger } from "log4js";
+import fs from "fs";
+import util from "util";
+const mkdir = util.promisify(fs.mkdir);
+
+(async () => {
+  try {
+    await mkdir("log");
+  } catch (e) {
+    log4js.getLogger().warn(e.message);
+  }
+})();
+
 log4js.configure({
   appenders: {
     file: {
@@ -23,7 +35,7 @@ log4js.configure({
   },
   categories: {
     file: { appenders: ["file"], level: "error" },
-    default: { appenders: ["file", "console"], level: "debug" },
+    default: { appenders: ["file", "console"], level: "info" },
   },
 });
 export default log4js;

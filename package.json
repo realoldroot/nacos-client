@@ -5,20 +5,20 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc clean",
-    "start": "node ./dist/app.js",
+    "start": "npx ts-node src/app.ts",
     "pretest": "tsc",
     "test": "node ./dist/app.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^15.0.0",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "@types/node": "^15.0.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "log4js": "^6.3.0",
-    "nacos": "^2.1.0"
+    "nacos": "^2.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   }
 }
