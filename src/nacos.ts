@@ -1,4 +1,4 @@
-import Apisix from "./apisix";
+import { apiSixClient as apisix } from "./apisix";
 import log4js from "./log_config";
 import * as nacos from "nacos";
 const { NacosNamingClient } = nacos as any;
@@ -17,9 +17,7 @@ const client = new NacosNamingClient({
   namespace: "public",
 });
 
-const apisix = new Apisix();
-
-export default function subscribe() {
+function subscribe() {
   client.subscribe(serviceName, (data: Array<NacosInstance>) => {
     if (data.length == 0 && lastNodeCount == 0) {
       return;
@@ -33,6 +31,10 @@ export default function subscribe() {
     apisix.update_route(nodes);
   });
 }
+
+export const nacosClient = {
+  subscribe,
+};
 
 // [
 //     {

@@ -1,3 +1,5 @@
-import subscribe from "./nacos";
+import { nacosClient } from "./nacos";
+import { apiSixClient } from "./apisix";
 
-subscribe();
+apiSixClient.create_route();
+nacosClient.subscribe();
