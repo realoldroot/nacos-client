@@ -35,7 +35,7 @@ log4js.configure({
   },
   categories: {
     file: { appenders: ["file"], level: "error" },
-    default: { appenders: ["file", "console"], level: "debug" },
+    default: { appenders: ["file", "console"], level: "info" },
   },
 });
 export default log4js;
