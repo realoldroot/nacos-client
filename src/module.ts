@@ -14,7 +14,7 @@ export interface NacosInstance {
   ephemeral: boolean;
   clusterName: string;
   serviceName: string;
-  metadata: {};
+  metadata: any;
   ipDeleteTimeout: number;
   instanceIdGenerator: string;
   instanceHeartBeatTimeOut: number;
