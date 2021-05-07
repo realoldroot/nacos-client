@@ -8,12 +8,13 @@ const log = log4js.getLogger("nacos");
 let lastNodeCount = 0;
 
 const nacosAddress = process.env.NACOS_ADDRESS ?? "172.16.101.123:8848";
+const namespace = process.env.PROFILE ?? "dev";
 log.info("nacosAddress: ", nacosAddress);
 
 const client = new NacosNamingClient({
-  logger: log,
+  logger: console,
   serverList: nacosAddress,
-  namespace: "public",
+  namespace: namespace,
 });
 
 function subscribe(s: Service) {
